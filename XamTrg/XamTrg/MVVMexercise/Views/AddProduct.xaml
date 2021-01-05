@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.MVVM.Views.AddProduct"
+             xmlns:viewModel="clr-namespace:XamTrg.MVVM.ViewModels">
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewModel:ProductViewModel x:Key="vm"></viewModel:ProductViewModel>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding Source={x:StaticResource vm}}">
+            <Label Text="Add New Porduct"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="ProductId"></Label>
+                <Entry Text="{Binding Path=Product.ProductId}" WidthRequest="200"></Entry>
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+                <Label Text="Product Name"></Label>
+                <Entry Text="{Binding Path=Product.ProductName}" WidthRequest="200"></Entry>
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+                <Label Text="Category Name"></Label>
+                <Entry Text="{Binding Path=Product.CategoryName}" WidthRequest="200"></Entry>
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+                <Label Text="Manufacturer"></Label>
+                <Entry Text="{Binding Path=Product.Manufacturer}" WidthRequest="200"></Entry>
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+                <Label Text="Description"></Label>
+                <Entry Text="{Binding Path=Product.Description}" WidthRequest="200"></Entry>
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+                <Label Text="Base Price"></Label>
+                <Entry Text="{Binding Path=Product.BasePrice}" WidthRequest="200"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save" Command="{Binding Path=AddProductCommand}"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
