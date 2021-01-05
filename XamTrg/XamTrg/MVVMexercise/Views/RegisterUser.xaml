@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.MVVMexercise.Views.RegisterUser"
+             xmlns:viewModel="clr-namespace:XamTrg.MVVMexercise.ViewModels">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewModel:UserViewModel x:Key="uvm"></viewModel:UserViewModel>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding Source={x:StaticResource uvm}}">
+            <Label Text="Register User"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Email"></Label>
+                <Entry Text="{Binding Path=User.Email}" WidthRequest="200"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Password"></Label>
+                <Entry Text="{Binding Path=User.Password}" WidthRequest="200"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Register" BorderColor="Yellow" BackgroundColor="LightGreen" Command="{Binding AddUserCommand}"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

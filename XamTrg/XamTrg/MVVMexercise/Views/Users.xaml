@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamTrg.MVVMexercise.Views.Users"
+             xmlns:viewModel ="clr-namespace:XamTrg.MVVMexercise.ViewModels">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <viewModel:UserViewModel x:Key="uvm"></viewModel:UserViewModel>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding Source={x:StaticResource uvm}}">
+            <Button Text="Get Users" FontSize="20" Command="{Binding GetUsersCommand}"/>
+            <ListView ItemsSource="{Binding Users}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding UserRowId}"/>
+                                <Label Text="{Binding Email}"/>
+                                <Label Text="{Binding Password}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Go To Add" IsEnabled="{Binding Path=IsAddEnabled}"
+                     Command="{Binding NavigateCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
